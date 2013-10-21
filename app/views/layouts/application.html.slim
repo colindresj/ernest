@@ -22,6 +22,11 @@ head
   = csrf_meta_tag
 
 body
+  - if flash[:notice]
+    .alert-box data-alert=""
+      .notice
+        = flash[:notice]
+        a.close href="#" &times;
 
   == yield
 
