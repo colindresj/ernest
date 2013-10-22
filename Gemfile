@@ -11,6 +11,8 @@ gem 'slim-rails'
 gem 'redcarpet'
 gem 'acts-as-taggable-on'
 
+gem 'nokogiri'
+
 group :development, :test do
   gem 'pry-rails'           # Causes rails console to open pry
                             # https://github.com/rweng/pry-rails

@@ -6,6 +6,9 @@
       - @documents.each do |document|
         li
           = link_to document.title, edit_user_document_path(@user, document)
+          .summary
+            - mrk_dwn = markdown document.content
+            = Nokogiri::HTML(mrk_dwn).text
           ul.actions
             li Tags: #{raw document.tag_list.map {|t| link_to t, tag_path(@user, t)}.join(', ') }
             li
