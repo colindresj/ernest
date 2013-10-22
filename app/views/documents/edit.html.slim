@@ -2,5 +2,6 @@
   .small-10.small-centered.columns
     = form_for [@user, @document] do |f|
       = f.text_field :title, :placeholder => 'Title'
-      = f.text_area :content, :cols => '40', :row => '200', :placeholder => 'Start writing...'
+      = f.text_area :content, :cols => '40', :row => '200', :class => 'documentArea', :placeholder => 'Start writing...'
       = f.submit 'Save', class: 'button round small'
+    #counter

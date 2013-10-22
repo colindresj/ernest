@@ -2,7 +2,7 @@ class DocumentsController < ApplicationController
 
   def index
     @user = User.find params[:user_id]
-    @documents = Document.where :user_id => @user.id
+    redirect_to user_path(@user)
   end
 
   def new
