@@ -1,9 +1,22 @@
 .row
   .small-12.large-3.columns
     = link_to 'New Document', new_user_document_path(@user)
+    h5 Recent Documents
+    ul.recent-docs
+      - @documents.order("updated_at DESC").first(5).each do |document|
+        li
+          = link_to document.title, edit_user_document_path(@user, document)
+    h5 Lists
+    ul.tags
+      li
+        = link_to 'All', @user
+      - tag_cloud Document.tag_counts, %w[s] do |tag|
+        li
+          = link_to tag.name, tag_path(@user, tag.name)
+      end
   .small-12.large-9.columns
     ul
-      - @documents.each do |document|
+      - @documents.order("title ASC").each do |document|
         li
           = link_to document.title, edit_user_document_path(@user, document)
           .summary
