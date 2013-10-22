@@ -9,6 +9,7 @@ gem 'pg'
 gem 'slim-rails'
 
 gem 'redcarpet'
+gem 'acts-as-taggable-on'
 
 group :development, :test do
   gem 'pry-rails'           # Causes rails console to open pry

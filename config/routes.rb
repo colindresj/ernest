@@ -11,6 +11,8 @@ EarnestApp::Application.routes.draw do
 
   delete '/users/:user_id/documents/:id/delete' => 'documents#destroy', :as => 'delete_document'
 
+  get '/users/:id/tags/:tag_id' => 'users#show', :as => 'tag'
+
 
   resources :users do
     resources :documents
