@@ -1,2 +1,6 @@
-h1 Documents#show
-p Find me in app/views/documents/show.html.slim
+.row
+  .small-12.columns
+    h2
+      = @document.title
+    div
+      = markdown @document.content

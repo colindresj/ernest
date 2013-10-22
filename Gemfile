@@ -8,6 +8,8 @@ gem 'rails', '3.2.14'
 gem 'pg'
 gem 'slim-rails'
 
+gem 'redcarpet'
+
 group :development, :test do
   gem 'pry-rails'           # Causes rails console to open pry
                             # https://github.com/rweng/pry-rails
