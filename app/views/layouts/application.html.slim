@@ -22,6 +22,7 @@ head
   = csrf_meta_tag
 
 body
+  = render 'layouts/nav'
   - if flash[:notice]
     .alert-box data-alert=""
       .notice

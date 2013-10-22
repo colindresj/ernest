@@ -7,5 +7,8 @@ EarnestApp::Application.routes.draw do
 
   post '/login' => 'session#create'
 
+  delete '/logout' => 'session#destroy', :as => 'logout'
+
   resources :users
+  resources :session
 end
