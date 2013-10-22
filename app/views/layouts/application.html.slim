@@ -23,12 +23,14 @@ head
 
 body
   = render 'layouts/nav'
-  - if flash[:notice]
-    .alert-box data-alert=""
-      .notice
-        = flash[:notice]
-        a.close href="#" &times;
 
+  - if flash[:notice]
+    .row
+      .small-2.large-12.columns
+        .alert-box data-alert=""
+          .notice
+            = flash[:notice]
+            a.close href="#" &times;
   == yield
 
   = javascript_include_tag "application"

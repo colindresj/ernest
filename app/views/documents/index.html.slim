@@ -1,0 +1,6 @@
+.row
+  .small-9.columns
+    ul
+      - @documents.each do |document|
+        li
+          = link_to document.title, user_document_path(@user, document)

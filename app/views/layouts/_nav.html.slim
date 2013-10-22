@@ -1,7 +1,10 @@
 nav.top-bar
   ul.title-area
     li.name
-      h1: a href="#" Earnest
+      - if current_user
+        h1: a href=("/users/#{current_user.id}") Earnest
+      - else
+        h1: a href=(root_path) Earnest
     li.toggle-topbar.menu-icon
       a href="#"
         span Menu
@@ -9,7 +12,7 @@ nav.top-bar
     ul.right
       li.divider
       - if current_user
-        li: a href="#" #{current_user.email}
+        li: a href=("/users/#{current_user.id}") #{current_user.email}
         li.divider
         li
           = link_to 'Log Out', logout_path, :method => 'delete'
