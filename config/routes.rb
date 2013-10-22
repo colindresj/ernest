@@ -9,6 +9,8 @@ EarnestApp::Application.routes.draw do
 
   delete '/logout' => 'session#destroy', :as => 'logout'
 
+  delete '/users/:user_id/documents/:id/delete' => 'documents#destroy', :as => 'delete_document'
+
 
   resources :users do
     resources :documents

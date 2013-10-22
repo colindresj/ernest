@@ -6,3 +6,8 @@
       - @documents.each do |document|
         li
           = link_to document.title, edit_user_document_path(@user, document)
+          ul.actions
+            li
+              = link_to 'Delete', delete_document_path(@user, document), :method => 'delete'
+            li
+              = link_to 'Preview', user_document_path(@user, document)
