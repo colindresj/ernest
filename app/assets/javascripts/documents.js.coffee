@@ -16,3 +16,8 @@ wordCount()
 # Binding the function to 'word-adding' events in the .documentArea
 $('.documentArea').on 'keyup propertychange paste', ->
   wordCount()
+
+## Doc Info Modal
+$('#revealDocInfo').click ->
+  $('#docInfo').foundation('reveal', 'open')
+  return false
