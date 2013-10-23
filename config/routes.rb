@@ -26,6 +26,9 @@ EarnestApp::Application.routes.draw do
 
   put '/users/:user_id/editables/:id/edit' => 'editables#update', :as => 'user_editable'
 
+  get '/editables/:id' => 'editables#show', :as => 'editable_preview'
+
+
   resources :users do
     resources :documents
   end

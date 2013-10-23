@@ -1,5 +1,9 @@
 class EditablesController < ApplicationController
 
+  def show
+    @editable = Editable.find params[:id]
+  end
+
   def create
     user = User.find params[:user_id]
     document = Document.find params[:document_id]

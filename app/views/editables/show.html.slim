@@ -1,0 +1,10 @@
+.row
+  .small-12.columns
+    h2
+      = @editable.title
+    div
+      = markdown @editable.content
+      = form_for [@editable.document.user, @editable.document] do |f|
+        = f.hidden_field :document, :name => 'document[title]', :value => @editable.title
+        = f.hidden_field :document, :name => 'document[content]', :value => @editable.content
+        = f.submit 'Save', class: 'button round small'
