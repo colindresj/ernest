@@ -5,3 +5,5 @@
       = f.text_field :email, :placeholder => 'Email'
       = f.password_field :password, :placeholder => 'Password'
       = f.submit 'Save', class: 'button round small'
+    .dropbox
+      = link_to 'Connect to Dropbox', dropbox_auth_path
