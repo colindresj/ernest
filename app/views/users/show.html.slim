@@ -13,7 +13,11 @@
       - tag_cloud Document.tag_counts, %w[s] do |tag|
         li
           = link_to tag.name, tag_path(@user, tag.name)
-      end
+    h5 Editables
+    ul.editables
+      - @user.editables.each do |editable|
+        li
+          = editable.title
   .small-12.large-9.columns
     ul
       - @documents.order("title ASC").each do |document|

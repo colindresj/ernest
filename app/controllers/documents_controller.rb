@@ -25,6 +25,7 @@ class DocumentsController < ApplicationController
   def edit
     @user = User.find params[:user_id]
     @document = Document.find params[:id]
+    @editable = Editable.new
   end
 
   def update

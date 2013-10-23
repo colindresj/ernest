@@ -20,6 +20,7 @@ EarnestApp::Application.routes.draw do
 
   get '/users/:id/preferences' => 'users#edit', :as => 'edit_user'
 
+  post 'users/:user_id/documents/:document_id/editable/new' => 'editables#create', :as => 'user_document_editables'
 
   resources :users do
     resources :documents

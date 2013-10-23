@@ -14,6 +14,7 @@ class User < ActiveRecord::Base
   attr_accessible :name, :email, :password, :password_confirmation
   has_secure_password
   has_many :documents
+  has_many :editables
 
   validates :password, :password_confirmation, :email, :presence => true
   validates :email, :uniqueness => true

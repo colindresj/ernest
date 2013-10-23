@@ -1,4 +1,9 @@
 #docInfo.reveal-modal
+  h1 Editor
+  = form_for [@user, @document, @editable] do |f|
+    = f.label :editor_email, 'Editor Email'
+    = f.text_field :editor_email
+    = f.submit 'Make Editor', class: 'button round small'
   h1 Info
   = form_for [@user, @document] do |f|
     = f.label :tag_list, 'Tags, seperated by commas'

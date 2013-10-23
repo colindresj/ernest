@@ -16,4 +16,5 @@ class Document < ActiveRecord::Base
   has_paper_trail :on => [:update]
 
   belongs_to :user
+  has_many :editables
 end
