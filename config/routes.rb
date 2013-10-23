@@ -18,6 +18,8 @@ EarnestApp::Application.routes.draw do
 
   get '/users/:user_id/documents/:document_id//versions/:id' => 'versions#show', :as => 'version'
 
+  get '/users/:id/preferences' => 'users#edit', :as => 'edit_user'
+
 
   resources :users do
     resources :documents
