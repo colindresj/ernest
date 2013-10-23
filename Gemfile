@@ -13,6 +13,9 @@ gem 'acts-as-taggable-on'
 
 gem 'paper_trail'
 
+gem 'dropbox-api'
+
+
 gem 'nokogiri'
 
 group :development, :test do
