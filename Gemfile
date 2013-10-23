@@ -15,8 +15,6 @@ gem 'paper_trail'
 
 gem 'nokogiri'
 
-gem 'twitter-typeahead-rails'
-
 group :development, :test do
   gem 'pry-rails'           # Causes rails console to open pry
                             # https://github.com/rweng/pry-rails

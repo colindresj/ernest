@@ -2,6 +2,6 @@
   h1 Info
   = form_for [@user, @document] do |f|
     = f.label :tag_list, 'Tags, seperated by commas'
-    = f.text_field :tag_list, id: 'docTags'
+    = f.text_field :tag_list
     = f.submit 'Save', class: 'button round small'
   a.close-reveal-modal &#215;
