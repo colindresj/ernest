@@ -11,8 +11,9 @@
 #
 
 class Document < ActiveRecord::Base
-  attr_accessible :title, :content, :user_id, :tag_list, :lists
+  attr_accessible :title, :content, :user_id, :tag_list
   acts_as_taggable
+  has_paper_trail :on => [:update]
 
   belongs_to :user
 end

@@ -1,4 +1,5 @@
 EarnestApp::Application.routes.draw do
+
   root :to => 'users#new'
 
   get '/signup' => 'users#new', :as => 'signup'
@@ -13,10 +14,13 @@ EarnestApp::Application.routes.draw do
 
   get '/users/:id/tags/:tag_id' => 'users#show', :as => 'tag'
 
+  post '/users/:user_id/documents/:document_id/versions/:id/revert' => 'versions#revert', :as => 'revert_version'
+
+  get '/users/:user_id/documents/:document_id//versions/:id' => 'versions#show', :as => 'version'
+
 
   resources :users do
     resources :documents
-    resources :lists
   end
   resources :session
 end

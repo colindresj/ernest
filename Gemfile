@@ -11,6 +11,8 @@ gem 'slim-rails'
 gem 'redcarpet'
 gem 'acts-as-taggable-on'
 
+gem 'paper_trail'
+
 gem 'nokogiri'
 
 group :development, :test do

@@ -1,10 +1,7 @@
 nav.top-bar
   ul.title-area
     li.name
-      - if current_user
-        h1: a href=("/users/#{current_user.id}") Earnest
-      - else
-        h1: a href=(root_path) Earnest
+        h1: a href=(root_path) Ernest
     li.toggle-topbar.menu-icon
       a href="#"
         span Menu

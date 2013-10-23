@@ -1,0 +1,10 @@
+.row
+  .small-12.columns
+    h2
+      = @version_doc.title
+    div
+      = markdown @version_doc.content
+    = link_to 'Back', :back, :class => 'button small round'
+    br
+    br
+    = link_to 'Revert', revert_version_path(@user, @document, @version), :method => :post, :class => 'button small round'

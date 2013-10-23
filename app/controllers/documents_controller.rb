@@ -32,7 +32,6 @@ class DocumentsController < ApplicationController
     document = Document.find params[:id]
 
     document.update_attributes params[:document]
-
     redirect_to edit_user_document_path(user, document), :notice => "#{document.title} saved."
   end
 

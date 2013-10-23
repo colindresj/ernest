@@ -8,6 +8,11 @@ class UsersController < ApplicationController
 
   def new
     @user = User.new
+    if current_user
+      id = session[:user_id]
+      logged_in_user = User.find id
+      redirect_to user_path(logged_in_user)
+    end
   end
 
   def create
