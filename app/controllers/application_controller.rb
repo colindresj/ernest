@@ -7,6 +7,11 @@ class ApplicationController < ActionController::Base
   end
   helper_method :current_user
 
+  def dropbox_client
+   Dropbox::API::Client.new :token => session[:access_token], :secret => session[:secret_token]
+  end
+  helper_method :dropbox_client
+
   def authorize
     redirect_to login_path, :alert => 'Sorry, you can\'t do that!' if current_user.nil?
   end

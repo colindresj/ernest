@@ -31,6 +31,7 @@ EarnestApp::Application.routes.draw do
   #Dropbox
   match '/dropbox/authorize'   => 'dropbox#authorize' , :method => :get , :as => :dropbox_auth
   match '/dropbox/callback' => 'dropbox#callback' , :method => :get , :as =>  :dropbox_callback
+  match '/dropbox/revoke' => 'dropbox#revoke' , :method => :get , :as =>  :dropbox_revoke
 
 
   resources :users do
