@@ -1,5 +1,8 @@
 class DocumentsController < ApplicationController
 
+  before_filter :authorize
+  before_filter :correct_user
+
   def index
     redirect_to user_path(@user)
   end

@@ -1,6 +1,7 @@
 class UsersController < ApplicationController
 
-  before_filter :authorize, only: [:show]
+  before_filter :authorize, only: [:show, :index, :edit]
+  before_filter :correct_user, only: [:show, :index, :edit]
 
   def index
     @users = User.all
@@ -38,10 +39,14 @@ class UsersController < ApplicationController
   end
 
   def update
+    #TODO fix the settings page
     user = User.find params[:id]
 
     if user && user.authenticate(params[:user][:password])
-      user.update_attributes params[:user]
+      user.name = params[:user][:name]
+      user.email = params[:user][:email]
+      user.password = params[:user][:password]
+      user.password_confirmation = params[:user][:password]
       user.save!
       redirect_to user_path(user), :notice => 'Settings saved.'
     else

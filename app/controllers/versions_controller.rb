@@ -1,4 +1,7 @@
 class VersionsController < ApplicationController
+
+  before_filter :authorize, :only => [:show]
+
   def revert
     @version = Version.find params[:id]
     @version.reify.save!

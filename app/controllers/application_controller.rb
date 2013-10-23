@@ -11,4 +11,15 @@ class ApplicationController < ActionController::Base
     redirect_to login_path, :alert => 'Sorry, you can\'t do that!' if current_user.nil?
   end
 
+  def correct_user
+    if params[:user_id].present?
+      user = User.find params[:user_id]
+    else
+      user = User.find params[:id]
+    end
+    unless current_user == (user)
+      redirect_to user_path(current_user), :alert => "Not your account."
+    end
+  end
+
 end

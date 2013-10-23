@@ -1,5 +1,8 @@
 class EditablesController < ApplicationController
 
+  before_filter :authorize
+  before_filter :correct_user, :only => [:edit]
+
   def show
     @editable = Editable.find params[:id]
   end
