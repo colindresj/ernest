@@ -17,7 +17,7 @@
     ul.editables
       - @user.editables.each do |editable|
         li
-          = editable.title
+          = link_to editable.title, editable_path(@user, editable)
   .small-12.large-9.columns
     ul
       - @documents.order("title ASC").each do |document|

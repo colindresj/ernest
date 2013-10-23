@@ -34,4 +34,17 @@ class EditablesController < ApplicationController
     end
   end
 
+  def edit
+    @user = User.find params[:user_id]
+    @editable = Editable.find params[:id]
+  end
+
+  def update
+    user = User.find params[:user_id]
+    editable = Editable.find params[:id]
+
+    editable.update_attributes params[:editable]
+    redirect_to :back, :notice => "#{editable.title} edits recorded."
+  end
+
 end

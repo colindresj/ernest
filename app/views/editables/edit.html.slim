@@ -1,0 +1,10 @@
+.row
+  .small-10.small-centered.columns
+    = form_for [@user, @editable] do |f|
+      = f.text_field :title, :placeholder => 'Title'
+      = f.text_area :content, :cols => '40', :row => '200', :class => 'documentArea', :placeholder => 'Start writing...', :style => 'height: 350px;'
+      = f.submit 'Save', class: 'button round small'
+    = link_to 'Home', @user, class: 'button round small'
+
+    #counter
+

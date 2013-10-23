@@ -22,6 +22,10 @@ EarnestApp::Application.routes.draw do
 
   post 'users/:user_id/documents/:document_id/editable/new' => 'editables#create', :as => 'user_document_editables'
 
+  get '/users/:user_id/editables/:id/edit' => 'editables#edit', :as => 'editable'
+
+  put '/users/:user_id/editables/:id/edit' => 'editables#update', :as => 'user_editable'
+
   resources :users do
     resources :documents
   end
