@@ -21,3 +21,5 @@ $('.documentArea').on 'keyup propertychange paste', ->
 $('#revealDocInfo').click ->
   $('#docInfo').foundation('reveal', 'open')
   return false
+
+## Autocomplete Tags

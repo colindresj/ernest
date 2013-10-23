@@ -2,6 +2,7 @@
   .sm-12.columns
     h2 Signup
     = form_for @user do |f|
+      = render 'shared/error_messages', target: @user
       = f.label :email
       = f.text_field :email
       = f.label :password
