@@ -8,11 +8,15 @@
           = link_to document.title, edit_user_document_path(@user, document)
     h5 Lists
     ul.tags
-      li
-        = link_to 'All', @user
-      - tag_cloud Document.tag_counts, %w[s] do |tag|
+      - unless @user.documents.present?
+        li No articles yet
+      - else
         li
-          = link_to tag.name, tag_path(@user, tag.name)
+          = link_to 'All', @user
+          - @user.documents.each do |document|
+            - document.tags.each do |tag|
+              li
+                = link_to tag.name, tag_path(@user, tag.name)
     h5 Editables
     ul.editables
       - @user.editables.each do |editable|
