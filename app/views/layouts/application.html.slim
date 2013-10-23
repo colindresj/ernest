@@ -24,13 +24,12 @@ head
 body
   = render 'layouts/nav'
 
-  - if flash[:notice]
+  - flash.each do |key, msg|
     .row
       .small-2.large-12.columns
-        .alert-box data-alert=""
+        .alert-box data-alert="" class="notice #{key}"
           .notice
-            - flash.each do |name, msg|
-              = raw(msg)
+            = msg
             a.close href="#" &times;
   == yield
 

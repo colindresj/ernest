@@ -2,13 +2,13 @@ EarnestApp::Application.routes.draw do
 
   root :to => 'users#new'
 
-  get '/signup' => 'users#new', :as => 'signup'
+  get '/signup' => 'users#new'
 
   get '/login' => 'session#new'
 
   post '/login' => 'session#create'
 
-  delete '/logout' => 'session#destroy', :as => 'logout'
+  delete '/logout' => 'session#destroy'
 
   delete '/users/:user_id/documents/:id/delete' => 'documents#destroy', :as => 'delete_document'
 

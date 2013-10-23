@@ -8,7 +8,7 @@ class ApplicationController < ActionController::Base
   helper_method :current_user
 
   def authorize
-    redirect_to login_path, :notice => 'Sorry, you can\'t do that!' if current_user.nil?
+    redirect_to login_path, :alert => 'Sorry, you can\'t do that!' if current_user.nil?
   end
 
 end

@@ -33,4 +33,20 @@ class UsersController < ApplicationController
     end
   end
 
+  def edit
+    @user = User.find params[:id]
+  end
+
+  def update
+    user = User.find params[:id]
+
+    if user && user.authenticate(params[:user][:password])
+      user.update_attributes params[:user]
+      user.save!
+      redirect_to user_path(user), :notice => 'Settings saved.'
+    else
+      redirect_to :back, :alert => 'Wrong password.'
+    end
+  end
+
 end

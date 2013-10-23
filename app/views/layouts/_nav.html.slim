@@ -9,7 +9,10 @@ nav.top-bar
     ul.right
       li.divider
       - if current_user
-        li: a href=("/users/#{current_user.id}") #{current_user.email}
+        - if current_user.name.present?
+          li: a href=(edit_user_path(current_user)) #{current_user.name}
+        - else
+          li: a href=(edit_user_path(current_user)) #{current_user.email}
         li.divider
         li
           = link_to 'Log Out', logout_path, :method => 'delete'

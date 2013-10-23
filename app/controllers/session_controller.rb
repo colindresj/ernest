@@ -8,9 +8,9 @@ class SessionController < ApplicationController
 
     if user && user.authenticate(params[:password])
       session[:user_id] = user.id
-      redirect_to user, :notice => "Welcome back #{user.email}!"
+      redirect_to user
     else
-      redirect_to login_path, :notice => 'Wrong email or password.'
+      redirect_to login_path, :alert => 'Wrong email or password.'
     end
   end
 

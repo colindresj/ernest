@@ -1,0 +1,8 @@
+.row
+  .small-10.small-centered.columns
+    = form_for @user do |f|
+      = f.text_field :name, :placeholder => 'Name'
+      = f.text_field :email, :placeholder => 'Email'
+      = f.password_field :password, :placeholder => 'Password'
+      = f.password_field :password_confirmation, :placeholder => 'Password'
+      = f.submit 'Save', class: 'button round small'
