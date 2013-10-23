@@ -28,6 +28,10 @@ EarnestApp::Application.routes.draw do
 
   get '/editables/:id' => 'editables#show', :as => 'editable_preview'
 
+  #Dropbox
+  match '/dropbox/authorize'   => 'dropbox#authorize' , :method => :get , :as => :dropbox_auth
+  match '/dropbox/callback' => 'dropbox#callback' , :method => :get , :as =>  :dropbox_callback
+
 
   resources :users do
     resources :documents
