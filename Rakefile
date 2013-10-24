@@ -4,4 +4,4 @@
 
 require File.expand_path('../config/application', __FILE__)
 
-EarnestApp::Application.load_tasks
+ErnestApp::Application.load_tasks

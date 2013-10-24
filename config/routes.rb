@@ -1,4 +1,4 @@
-EarnestApp::Application.routes.draw do
+ErnestApp::Application.routes.draw do
 
   root :to => 'users#new'
 
