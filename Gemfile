@@ -15,6 +15,7 @@ gem 'paper_trail'
 
 gem 'dropbox-api'
 
+gem 'dotenv-rails'
 
 gem 'nokogiri'
 

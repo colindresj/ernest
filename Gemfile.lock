@@ -66,6 +66,9 @@ GEM
       debugger-ruby_core_source (~> 1.2.3)
     debugger-linecache (1.2.0)
     debugger-ruby_core_source (1.2.3)
+    dotenv (0.9.0)
+    dotenv-rails (0.9.0)
+      dotenv (= 0.9.0)
     dropbox-api (0.4.1)
       hashie
       multi_json
@@ -193,6 +196,7 @@ DEPENDENCIES
   coffee-rails (~> 3.2.1)
   compass
   compass-rails
+  dotenv-rails
   dropbox-api
   jquery-rails
   meta_request
