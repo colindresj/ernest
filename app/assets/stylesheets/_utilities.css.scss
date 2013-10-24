@@ -1,0 +1,56 @@
+.row.full-width {
+  min-width: 100%;
+  .columns {
+    padding: 0 emCalc(45px);
+  }
+}
+
+.cf:before,
+.cf:after {
+    content: " "; /* 1 */
+    display: table; /* 2 */
+}
+.cf:after {
+    clear: both;
+}
+
+@font-face {
+  font-family: "Avenir";
+  src: url('/public/fonts/avenir.ttf')
+}
+a, a:hover {
+  @include transition-property(color);
+  @include transition-duration(.65s);
+}
+.special-link a {
+  position: relative;
+}
+.special-link a:hover {
+  text-decoration: none;
+}
+.special-link a::after {
+  position: absolute;
+  top: 95%;
+  left: 0;
+  width: 100%;
+  height: 2px;
+  background: $body-font-color;
+  content: '';
+  opacity: 0;
+  -webkit-transition: all .45s ease;
+    -moz-transition: all .45s ease;
+    transition: all .45s ease;
+  -webkit-transform: translateY(2px);
+    -moz-transform: translateY(2px);
+    transform: translateY(2px);
+}
+.special-link a:hover::after,
+.special-link a:focus::after {
+  opacity: 1;
+  -webkit-transform: translateY(0px);
+    -moz-transform: translateY(0px);
+    transform: translateY(0px);
+}
+li {
+  list-style-type: none;
+}
