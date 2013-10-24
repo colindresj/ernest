@@ -1,0 +1,110 @@
+// Place all the styles related to the documents controller here.
+// They will automatically be included in application.css.
+// You can use Sass (SCSS) here: http://sass-lang.com/
+
+@import 'compass/css3/transition';
+
+$distract-free-color: #e2e1db;
+$placeholder-color: $distract-free-color;
+
+.doc-edit-container {
+   margin-top: emCalc(30px);
+}
+.doc-edit-wrapper {
+  ::-webkit-input-placeholder {
+   color: $placeholder-color;
+  }
+    :-moz-placeholder { /* Firefox 18- */
+       color: $placeholder-color;
+    }
+    ::-moz-placeholder {  /* Firefox 19+ */
+       color: $placeholder-color;
+    }
+    :-ms-input-placeholder {
+       color: $placeholder-color;
+    }
+  form {
+    margin: 0;
+    &:after {
+      content: ".";
+      display: block;
+      height: 0;
+      clear: both;
+      visibility: hidden;
+    }
+  }
+  input {
+    padding: 0;
+  }
+  .doc-title, .documentArea{
+    font-size: emCalc(20px);
+  }
+  .doc-title:focus {
+    color: darken($distract-free-color, 10%);
+  }
+  .documentArea {
+    padding: 0;
+    color: #51443c;
+    height: auto;
+    max-height: 350px;
+    resize: none;
+    font-family: Baskerville, "Baskerville Old Face", "Hoefler Text", Garamond, "Times New Roman", serif;
+  }
+  .distraction-free {
+    color: $distract-free-color;
+  }
+  .doc-action {
+    border: 0;
+    background-color: transparent;
+    font-size: emCalc(14px);
+    text-transform: lowercase;
+    margin: 0;
+    padding: 0;
+    margin-bottom: emCalc(12px);
+    cursor: pointer;
+    opacity: .4;
+    @include transition-property(opacity);
+    @include transition-duration(.65s);
+  }
+  .doc-save {
+    color: #bbe3c1;
+  }
+  .doc-info {
+    color: #a2d8f0;
+  }
+  .doc-home {
+    color: #eeb2b1;
+  }
+  .doc-action:hover {
+    opacity: 1;
+  }
+  .doc-action:focus {
+    outline: none;
+  }
+}
+.distraction-free {
+  color: $distract-free-color;
+  @include transition-property(color);
+  @include transition-duration(.65s);
+}
+a.distraction-free:hover {
+  color: darken($distract-free-color, 5%);
+  @include transition-property(color);
+  @include transition-duration(.65s);
+}
+.versions-dropdown {
+  position: absolute;
+  top: emCalc(15px);
+  right: emCalc(15px);
+  font-size: emCalc(14px);
+}
+.row .word-count {
+  position: absolute;
+  bottom: 0;
+  right: 0;
+  text-align: right;
+  font-size: emCalc(14px);
+}
+
+
+

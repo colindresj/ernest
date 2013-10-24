@@ -49,6 +49,7 @@ group :assets do
   gem 'coffee-rails', '~> 3.2.1'
 
   # Foundation
+  gem 'compass'
   gem 'compass-rails' # you need this or you get an err
   gem 'zurb-foundation', '~> 4.0.0'
 

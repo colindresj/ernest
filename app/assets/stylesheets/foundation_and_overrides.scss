@@ -15,11 +15,13 @@
 // $em-base: 16px;
 
 // We use these to control various global styles
-// $body-bg: #fff;
+$body-bg: #f7f7f7;
 // $body-font-color: #222;
-// $body-font-family: "Helvetica Neue", "Helvetica", Helvetica, Arial, sans-serif;
+// $body-font-family: Baskerville, "Baskerville Old Face", "Hoefler Text", Garamond, "Times New Roman", serif;
 // $body-font-weight: normal;
 // $body-font-style: normal;
+
+$base-line-height: 100%;
 
 // We use this to control font-smoothing
 // $font-smoothing: antialiased;
@@ -195,15 +197,15 @@
 // $label-bottom-margin: emCalc(3px);
 // $input-font-family: inherit;
 // $input-font-color: rgba(0,0,0,0.75);
-// $input-font-size: emCalc(14px);
-// $input-bg-color: #fff;
-// $input-focus-bg-color: darken(#fff, 2%);
-// $input-border-color: darken(#fff, 20%);
+$input-font-size: emCalc(16px);
+$input-bg-color: #f7f7f7;
+$input-focus-bg-color: #f7f7f7;
+// $input-border-color: #f7f7f7;
 // $input-focus-border-color: darken(#fff, 40%);
 // $input-border-style: solid;
-// $input-border-width: 1px;
+$input-border-width: 0px;
 // $input-disabled-bg: #ddd;
-// $input-box-shadow: inset 0 1px 2px rgba(0,0,0,0.1);
+$input-box-shadow: none;
 
 // We use these to style the fieldset border and spacing.
 // $fieldset-border-style: solid;
