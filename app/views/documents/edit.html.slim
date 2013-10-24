@@ -1,23 +1,25 @@
 = render 'documents/info'
-.row
+- text_area_placeholder = 'Start writing your document here. Click save on the bottom right to record a version for future reference. Click info right below that to grant anyone editor access to this document. You can view or revert from previous version by clicking the link at the top right.'
+.row.doc-edit-container
   .small-10.small-centered.columns
     - unless @document.versions.empty?
       - current_count = @document.versions.length
-      a href="#" data-dropdown="versionsDrop" Version #{current_count + 1}
+      a href="#" class="versions-dropdown" data-dropdown="versionsDrop" class="distraction-free" version #{current_count + 1}
       ul#versionsDrop.f-dropdown data-dropdown-content=''
         - count = 0
         - @document.versions.each do |version|
           - count += 1
           li
-            a href="#{version_path(@user, @document, version)}" Version #{count} <span style="font-size:.75em;font-style:italic">#{time_ago_in_words(version.created_at)} ago</span>
-    br
-    br
-    = form_for [@user, @document] do |f|
-      = f.text_field :title, :placeholder => 'Title'
-      = f.text_area :content, :cols => '40', :row => '200', :class => 'documentArea', :placeholder => 'Start writing...', :style => 'height: 350px;'
-      = f.submit 'Save', class: 'button round small'
-    = link_to 'Info', '#', class: 'button round small', id: 'revealDocInfo'
-    = link_to 'Home', @user, class: 'button round small'
-
-    #counter
+            a href="#{version_path(@user, @document, version)}" version #{count} <span style="font-size:.75em;font-style:italic">#{time_ago_in_words(version.created_at)} ago</span>
+    .doc-edit-wrapper
+      = form_for [@user, @document] do |f|
+        = f.text_field :title, :placeholder => 'Add a title', :class => 'distraction-free doc-title', :autocomplete => 'off'
+        = f.text_area :content, :cols => '40', :row => '200', :class => 'documentArea', :placeholder => "#{text_area_placeholder}", :autofocus => true
+        = f.submit 'Save', class: 'doc-action doc-save'
+      .row
+        .small-6.column
+          = button_to 'Info', '#', class: 'doc-action doc-info', id: 'revealDocInfo', :method => 'get'
+          = button_to 'Home', @user, class: 'doc-action doc-home', :method => 'get'
+        .small-6.column.word-count
+          #counter.distraction-free
 

@@ -22,7 +22,10 @@ head
   = csrf_meta_tag
 
 body
-  = render 'layouts/nav'
+  / Hiding the nav on the article edit page
+  / for distraction-free writing
+  - unless (params[:controller] == 'documents') && (params[:action] == 'edit')
+    = render 'layouts/nav'
 
   - flash.each do |key, msg|
     .row
