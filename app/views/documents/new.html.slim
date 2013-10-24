@@ -1,6 +1,11 @@
+- text_area_placeholder = 'Start writing your document here. Click save on the bottom right to record a version for future reference. Click info right below that to grant anyone editor access to this document. You can view or revert from previous version by clicking the link at the top right.'
 .row
   .small-10.small-centered.columns
-    = form_for [@user, @document] do |f|
-      = f.text_field :title, :placeholder => 'Title'
-      = f.text_area :content, :cols => '40', :row => '200', :placeholder => 'Start writing...'
-      = f.submit 'Save', class: 'button round small'
+    .new-doc-wrapper
+      = form_for [@user, @document] do |f|
+        = f.text_field :title, :placeholder => 'Add a title', class: 'doc-title distraction-free', autocomplete: 'off'
+        = f.text_area :content, :cols => '40', :row => '200', :placeholder => text_area_placeholder, class: 'documentArea', :autofocus => 'true'
+        = f.submit 'Save', class: 'doc-action doc-save'
+        .row
+          .small-12.column.word-count
+            #counter.distraction-free

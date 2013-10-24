@@ -10,7 +10,7 @@ $placeholder-color: $distract-free-color;
 .doc-edit-container {
    margin-top: emCalc(30px);
 }
-.doc-edit-wrapper {
+.doc-edit-wrapper, .new-doc-wrapper, .editable-wrapper {
   ::-webkit-input-placeholder {
    color: $placeholder-color;
   }
@@ -57,30 +57,43 @@ $placeholder-color: $distract-free-color;
   .doc-action {
     border: 0;
     background-color: transparent;
-    font-size: emCalc(14px);
+    font-size: emCalc(12px);
     text-transform: lowercase;
     margin: 0;
     padding: 0;
     margin-bottom: emCalc(12px);
     cursor: pointer;
-    opacity: .4;
-    @include transition-property(opacity);
+    @include transition-property(color);
     @include transition-duration(.65s);
   }
   .doc-save {
     color: #bbe3c1;
+    background-color: transparent;
+    cursor: pointer;
+    &:hover {
+      color: darken(#bbe3c1, 25%);
+    }
   }
   .doc-info {
     color: #a2d8f0;
-  }
-  .doc-home {
-    color: #eeb2b1;
+    margin-left: 15px;
+    &:hover {
+      color: darken(#a2d8f0, 25%);
+    }
   }
   .doc-action:hover {
-    opacity: 1;
+    @include transition-property(color);
+    @include transition-duration(.65s);
   }
   .doc-action:focus {
     outline: none;
+  }
+  .row .word-count {
+    position: absolute;
+    bottom: 0;
+    right: 0;
+    text-align: right;
+    font-size: emCalc(12px);
   }
 }
 .distraction-free {
@@ -95,13 +108,5 @@ a.distraction-free:hover {
   right: emCalc(15px);
   font-size: emCalc(14px);
 }
-.row .word-count {
-  position: absolute;
-  bottom: 0;
-  right: 0;
-  text-align: right;
-  font-size: emCalc(14px);
-}
-
 
 

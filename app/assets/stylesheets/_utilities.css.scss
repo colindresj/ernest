@@ -15,8 +15,15 @@
 }
 
 @font-face {
-  font-family: "Avenir";
-  src: url('/public/fonts/avenir.ttf')
+  font: {
+     family: 'Avenir';
+     weight: 'normal';
+     style: 'normal';
+  }
+  src: asset-url('avenir.eot', font);
+  src: asset-url('avenir.eot', font) format('embedded-opentype'),
+       asset-url('avnir.woff', font) format('woff'),
+       asset-url('avenir.ttf', font) format('truetype')
 }
 a, a:hover {
   @include transition-property(color);
@@ -54,3 +61,58 @@ a, a:hover {
 li {
   list-style-type: none;
 }
+input:focus {
+  outline: none !important;
+}
+
+/****************
+*** Keyframes ***
+****************/
+
+@-webkit-keyframes fadeInUp {
+  0% {
+    opacity: 0;
+    -webkit-transform: translateY(2em);
+  }
+  100% {
+    opacity: 1;
+    -webkit-transform: translateY(0);
+  }
+}
+  @-moz-keyframes fadeInUp {
+    0% {
+      opacity: 0;
+      -moz-transform: translateY(2em);
+    }
+    100% {
+      opacity: 1;
+      -moz-transform: translateY(0);
+    }
+  }
+  @-o-keyframes fadeInUp {
+    0% {
+      opacity: 0;
+      -o-transform: translateY(2em);
+    }
+    100% {
+      opacity: 1;
+      -o-transform: translateY(0);
+    }
+  }
+  @keyframes fadeInUp {
+    0% {
+      opacity: 0;
+      transform: translateY(2em);
+    }
+    100% {
+      opacity: 1;
+      transform: translateY(0);
+    }
+  }
+.delay-fade {
+  -webkit-animation: fadeInUp 2s;
+    -moz-animation: fadeInUp 2s;
+    -o-animation: fadeInUp 2s;
+    animation: fadeInUp 2s;
+}
+

@@ -24,8 +24,8 @@ head
 body
   / Hiding the nav on the article edit page
   / for distraction-free writing
-  - unless (params[:controller] == 'documents') && (params[:action] == 'edit')
-    = render 'layouts/nav'
+
+  = render 'layouts/nav'
 
   - flash.each do |key, msg|
     .row

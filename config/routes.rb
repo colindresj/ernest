@@ -1,6 +1,6 @@
 ErnestApp::Application.routes.draw do
 
-  root :to => 'users#new'
+  root :to => 'users#landing'
 
   get '/signup' => 'users#new'
 

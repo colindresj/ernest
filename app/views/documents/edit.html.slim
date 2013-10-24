@@ -1,3 +1,5 @@
+- content_for :title do
+  = @document.title
 = render 'documents/info'
 - text_area_placeholder = 'Start writing your document here. Click save on the bottom right to record a version for future reference. Click info right below that to grant anyone editor access to this document. You can view or revert from previous version by clicking the link at the top right.'
 .row.doc-edit-container
@@ -16,10 +18,8 @@
         = f.text_field :title, :placeholder => 'Add a title', :class => 'distraction-free doc-title', :autocomplete => 'off'
         = f.text_area :content, :cols => '40', :row => '200', :class => 'documentArea', :placeholder => "#{text_area_placeholder}", :autofocus => true
         = f.submit 'Save', class: 'doc-action doc-save'
+        = link_to 'Info', '#', class: 'doc-action doc-info', id: 'revealDocInfo', :method => 'get'
       .row
-        .small-6.column
-          = button_to 'Info', '#', class: 'doc-action doc-info', id: 'revealDocInfo', :method => 'get'
-          = button_to 'Home', @user, class: 'doc-action doc-home', :method => 'get'
-        .small-6.column.word-count
+        .small-12.column.word-count
           #counter.distraction-free
 
