@@ -7,24 +7,24 @@
     h6 Recent Documents
     ul.recent-docs
       - @documents.order("updated_at DESC").first(5).each do |document|
-        li
-          = link_to document.title, edit_user_document_path(@user, document)
+        a href="#{edit_user_document_path(@user, document)}"
+          li #{document.title}
     h6 Lists
     ul.tags
       - unless @user.documents.present?
         li No articles yet
       - else
-        li
-          = link_to 'All', @user
-          - @user.documents.each do |document|
-            - document.tags.each do |tag|
-              li
-                = link_to tag.name, tag_path(@user, tag.name)
+        a href="#{user_path(@user)}"
+          li All
+        - @user.documents.each do |document|
+          - document.tags.each do |tag|
+            a href="#{tag_path(@user, tag.name)}"
+              li #{tag.name}
     h6 Editables
     ul.editables
       - @user.editables.each do |editable|
-        li
-          = link_to editable.title, editable_path(@user, editable)
+        a href="#{editable_path(@user, editable)}"
+          li #{editable.title}
   .small-12.large-10.columns.main-user-area
     .your-docs-title
       h6 Your Documents

@@ -4,13 +4,28 @@
 
 @import 'compass/css3';
 
+.landing-intro {
+  text-align: center;
+  text-transform: capitalize;
+  img {
+    margin-bottom: 15px;
+  }
+  a {
+    color: #a2d8f0;
+    &:hover {
+      color: #34aade;
+    }
+  }
+}
+
 .user-page {
-  background-color: #f3f2ea;
+  margin-top: -1.875em;
 }
 .small-12.large-2.columns.side-bar {
-  margin-top: emCalc(45px);
+  height: 100vh;
   font-size: emCalc(14px);
   padding: 0;
+  background-color: #f3f2ea;
   .button {
     display: block;
     margin: emCalc(45px) auto;
@@ -37,7 +52,7 @@
 }
 .search {
   padding: 0 emCalc(12px);
-  margin-top: emCalc(-30px);
+  margin-top: emCalc(12px);
   input {
     border: 1.5px solid #d8d7d0;
     @include border-radius(25px);
@@ -47,6 +62,7 @@
   padding-top: emCalc(45px) !important;
   background-color: #f7f7f7;
   border-left: 1px solid #d9d8cf;
+  height:100vh;
 }
 .your-docs-title {
   background-color: #f8f6f2;

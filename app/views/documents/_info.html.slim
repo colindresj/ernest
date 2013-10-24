@@ -1,18 +1,21 @@
 #docInfo.reveal-modal
-  h1 Info
+  h5 Info
   = form_for [@user, @document] do |f|
     = f.label :tag_list, 'Tags, seperated by commas'
-    = f.text_field :tag_list
-    = f.submit 'Save', class: 'button round small'
-  h1 Proposed Edits
+    = f.text_field :tag_list, autocomplete: 'off'
+    = f.submit 'Save', class: 'button small'
+  h5 Proposed Edits
   ul
-    - @document.editables.each do |editable|
-      li
-        - user = User.find editable.user_id
-        = link_to user.email, editable_preview_path(editable), :target => '_blank'
-  h1 New Editor
+    - if @document.editables.present?
+      - @document.editables.each do |editable|
+        li
+          - user = User.find editable.user_id
+          = link_to user.email, editable_preview_path(editable)
+    - else
+      p No edits proposed yet.
+  h5 New Editor
   = form_for [@user, @document, @editable] do |f|
     = f.label :editor_email, 'Editor Email'
-    = f.text_field :editor_email
-    = f.submit 'Make Editor', class: 'button round small'
+    = f.text_field :editor_email, autocomplete: 'off'
+    = f.submit 'Make Editor', class: 'button small'
   a.close-reveal-modal &#215;

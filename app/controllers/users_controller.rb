@@ -9,17 +9,12 @@ class UsersController < ApplicationController
 
   def new
     @user = User.new
-    if current_user
-      id = session[:user_id]
-      logged_in_user = User.find id
-      redirect_to user_path(logged_in_user)
-    end
   end
 
   def create
     @user = User.new params[:user]
     if @user.save
-      redirect_to root_url, notice: 'Thanks for signing up! You can now log in.'
+      redirect_to login_path, notice: 'Thanks for signing up! You can now log in.'
     else
       render :new
     end
@@ -51,6 +46,14 @@ class UsersController < ApplicationController
       redirect_to user_path(user), :notice => 'Settings saved.'
     else
       redirect_to :back, :alert => 'Wrong password.'
+    end
+  end
+
+  def landing
+    if current_user
+      id = session[:user_id]
+      logged_in_user = User.find id
+      redirect_to user_path(logged_in_user)
     end
   end
 
