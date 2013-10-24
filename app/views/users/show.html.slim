@@ -1,12 +1,15 @@
-.row
-  .small-12.large-3.columns
-    = link_to 'New Document', new_user_document_path(@user)
-    h5 Recent Documents
+.row.full-width.user-page
+  .small-12.large-2.columns.side-bar
+    .search
+      form
+        input type="search" placeholder="search documents"
+    = link_to 'New Document', new_user_document_path(@user), :class => 'button small'
+    h6 Recent Documents
     ul.recent-docs
       - @documents.order("updated_at DESC").first(5).each do |document|
         li
           = link_to document.title, edit_user_document_path(@user, document)
-    h5 Lists
+    h6 Lists
     ul.tags
       - unless @user.documents.present?
         li No articles yet
@@ -17,22 +20,26 @@
             - document.tags.each do |tag|
               li
                 = link_to tag.name, tag_path(@user, tag.name)
-    h5 Editables
+    h6 Editables
     ul.editables
       - @user.editables.each do |editable|
         li
           = link_to editable.title, editable_path(@user, editable)
-  .small-12.large-9.columns
-    ul
+  .small-12.large-10.columns.main-user-area
+    .your-docs-title
+      h6 Your Documents
+    ul.user-docs-list
       - @documents.order("title ASC").each do |document|
-        li
-          = link_to document.title, edit_user_document_path(@user, document)
+        li.item.cf
+          h3.special-link
+            = link_to document.title, edit_user_document_path(@user, document)
           .summary
             - mrk_dwn = markdown document.content
             = truncate(Nokogiri::HTML(mrk_dwn).text, length: 300)
-          ul.actions
-            li Tags: #{raw document.tag_list.map {|t| link_to t, tag_path(@user, t)}.join(', ') }
-            li
-              = link_to 'Delete', delete_document_path(@user, document), :method => 'delete'
-            li
-              = link_to 'Preview', user_document_path(@user, document)
+          .doc-actions
+            .tags #{raw document.tag_list.map {|t| link_to t, tag_path(@user, t)}.join(', ') }
+            .delete-preview
+              span.delete
+                = link_to 'Delete', delete_document_path(@user, document), :method => 'delete'
+              span.preview
+                = link_to 'Preview', user_document_path(@user, document)

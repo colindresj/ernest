@@ -33,8 +33,10 @@ $placeholder-color: $distract-free-color;
       visibility: hidden;
     }
   }
-  input {
+  input, textarea {
     padding: 0;
+    border-width: 0;
+    box-shadow: none;
   }
   .doc-title, .documentArea{
     font-size: emCalc(20px);
@@ -43,7 +45,6 @@ $placeholder-color: $distract-free-color;
     color: darken($distract-free-color, 10%);
   }
   .documentArea {
-    padding: 0;
     color: #51443c;
     height: auto;
     max-height: 350px;
@@ -84,13 +85,9 @@ $placeholder-color: $distract-free-color;
 }
 .distraction-free {
   color: $distract-free-color;
-  @include transition-property(color);
-  @include transition-duration(.65s);
 }
 a.distraction-free:hover {
   color: darken($distract-free-color, 5%);
-  @include transition-property(color);
-  @include transition-duration(.65s);
 }
 .versions-dropdown {
   position: absolute;
