@@ -17,4 +17,8 @@ class Document < ActiveRecord::Base
 
   belongs_to :user
   has_many :editables
+
+  def self.search(query)
+    Document.where :title => query.titleize
+  end
 end

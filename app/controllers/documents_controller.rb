@@ -4,7 +4,12 @@ class DocumentsController < ApplicationController
   before_filter :correct_user
 
   def index
-    redirect_to user_path(@user)
+    unless params[:q]
+      @user = User.find params[:user_id]
+      redirect_to user_path(@user)
+    else
+      @documents = Document.search params[:q]
+    end
   end
 
   def new
