@@ -4,13 +4,13 @@
 
 @import 'compass/css3/transition';
 
-$distract-free-color: #e2e1db;
+$distract-free-color: #cbc9bf;
 $placeholder-color: $distract-free-color;
 
 .doc-edit-container {
    margin-top: emCalc(30px);
 }
-.doc-edit-wrapper, .new-doc-wrapper, .editable-wrapper {
+.doc-edit-wrapper, .new-doc-wrapper, .editable-wrapper, .version-wrapper {
   ::-webkit-input-placeholder {
    color: $placeholder-color;
   }
@@ -42,7 +42,7 @@ $placeholder-color: $distract-free-color;
     font-size: emCalc(20px);
   }
   .doc-title:focus {
-    color: darken($distract-free-color, 10%);
+    color: darken($distract-free-color, 15%);
   }
   .documentArea {
     color: #51443c;
@@ -72,6 +72,14 @@ $placeholder-color: $distract-free-color;
     cursor: pointer;
     &:hover {
       color: darken(#bbe3c1, 25%);
+    }
+  }
+  .doc-cancel {
+    color: #eeb2b1;
+    background-color: transparent;
+    cursor: pointer;
+    &:hover {
+      color: darken(#eeb2b1, 25%);
     }
   }
   .doc-info {
@@ -107,6 +115,24 @@ a.distraction-free:hover {
   top: emCalc(15px);
   right: emCalc(15px);
   font-size: emCalc(14px);
+}
+.markdown-guide {
+  position: absolute;
+  margin-top: -144px;
+  margin-left: -156px;
+  top: 50%;
+  left: 50%;
+  z-index: 9999;
+  background-color: $primary-color;
+  color: #fafafa;
+  padding: 20px 50px;
+  text-align: center;
+  opacity: 0;
+  @include transition-property(opacity);
+  @include transition-duration(.65s);
+  h4 {
+    color: inherit;
+  }
 }
 
 
