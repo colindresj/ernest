@@ -18,7 +18,13 @@ class DropboxController < ApplicationController
 
       @client = Dropbox::API::Client.new :token => session[:access_token], :secret => session[:secret_token]
 
-      session[:dropbox_approved] = true
+      # Download all already existing user articles to Dropbox account
+      user = current_user
+      unless user.documents.empty?
+        user.documents.each do |document|
+          @client.upload "#{document.title}.md", document.content
+        end
+      end
 
       redirect_to user_path(current_user)
 

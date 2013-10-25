@@ -17,6 +17,19 @@ class DocumentsController < ApplicationController
     user = User.find params[:user_id]
     document.user = user
     document.save
+
+    if document.title.empty?
+      document.title = 'Untitled'
+      document.save
+    end
+
+    db_client = dropbox_client
+    begin
+        db_client.upload "#{document.title}.md", document.content
+    rescue
+    ensure
+    end
+
     redirect_to edit_user_document_path(user, document), :notice => "#{document.title} saved."
   end
 
@@ -35,13 +48,22 @@ class DocumentsController < ApplicationController
     user = User.find params[:user_id]
     document = Document.find params[:id]
 
+    db_client = dropbox_client
+    begin
+      if document.title == params[:document][:title]
+        db_client.upload "#{params[:document][:title]}.md", params[:document][:content]
+      else
+        file = db_client.find"#{document.title}.md"
+        file.destroy
+        db_client.upload "#{params[:document][:title]}.md", document.content
+      end
+    rescue
+    ensure
+    end
+
     document.update_attributes params[:document]
 
-    db_client = dropbox_client
-    db_client.upload "#{document.title}.md", document.content
-
     redirect_to edit_user_document_path(user, document), :notice => "#{document.title} saved."
-
   end
 
   def delete
@@ -49,6 +71,14 @@ class DocumentsController < ApplicationController
 
   def destroy
     document = Document.find params[:id]
+
+    db_client = dropbox_client
+    begin
+      file = db_client.find"#{document.title}.md"
+      file.destroy
+    rescue
+    ensure
+    end
 
     document.destroy
 
