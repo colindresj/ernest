@@ -2,6 +2,13 @@
   = @document.title
 = render 'documents/info'
 - text_area_placeholder = 'Start writing your document here. Click save on the bottom right to record a version for future reference. Click info right below that to grant anyone editor access to this document. You can view or revert from previous version by clicking the link at the top right.'
+.markdown-guide
+  h4 Markdown Guide
+  p Use # for headers
+  p Use * for italics
+  p Use ** for bold
+  p Use > for blockquotes
+  p Use ___ for horizontal lines
 .row.doc-edit-container
   .small-10.small-centered.columns
     - unless @document.versions.empty?
@@ -11,8 +18,8 @@
         - count = 0
         - @document.versions.each do |version|
           - count += 1
-          li
-            a href="#{version_path(@user, @document, version)}" version #{count} <span style="font-size:.75em;font-style:italic">#{time_ago_in_words(version.created_at)} ago</span>
+          li.version
+            a href="#{version_path(@user, @document, version)}" version #{count} <span style="font-size:.8em;font-style:italic">#{time_ago_in_words(version.created_at)} ago</span>
     .doc-edit-wrapper
       = form_for [@user, @document] do |f|
         = f.text_field :title, :placeholder => 'Add a title', :class => 'distraction-free doc-title', :autocomplete => 'off'

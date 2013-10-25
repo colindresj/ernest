@@ -1,11 +1,18 @@
 - content_for :title do
   = @editable.title
+.markdown-guide
+  h4 Markdown Guide
+  p Use # for headers
+  p Use * for italics
+  p Use ** for bold
+  p Use > for blockquotes
+  p Use ___ for horizontal lines
 .row
   .small-10.small-centered.columns
     .editable-wrapper
       = form_for [@user, @editable] do |f|
         = f.text_field :title, :placeholder => 'Title', :autocomplete => 'off', :class => 'doc-title distraction-free'
-        = f.text_area :content, :cols => '40', :row => '200', :class => 'documentArea', :placeholder => 'Start writing...', :style => 'height: 350px;'
+        = f.text_area :content, :cols => '40', :row => '200', :class => 'documentArea', :placeholder => 'Start writing...', :style => 'height: 350px;', autofocus: 'true'
         = f.submit 'Propose Edits', class: 'doc-action doc-save'
       .row
         .small-12.column.word-count

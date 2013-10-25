@@ -24,3 +24,30 @@ $ ->
     $('#docInfo').foundation('reveal', 'open')
     return false
 
+## Always start at bottom of document
+$ ->
+  textarea = $('.documentArea');
+  $(textarea).scrollTop($(textarea)[0].scrollHeight)
+
+## Keyboard shortcuts
+$ ->
+  # Markdown guide
+  toggle = false
+  $('.documentArea').keydown (e) ->
+    if ((e.ctrlKey) && (e.which == 77))
+      if toggle == false
+        $('.markdown-guide').css 'opacity', '.9'
+        toggle = true
+      else
+        $('.markdown-guide').css 'opacity', '0'
+        toggle = false
+  # Save
+  $('.documentArea').keydown (e) ->
+    if ((e.ctrlKey) && (e.which == 83))
+      $('form').submit()
+  # Info
+  $('.documentArea').keydown (e) ->
+    if ((e.ctrlKey) && (e.which == 73))
+      $('#docInfo').foundation('reveal', 'open')
+      return false
+
