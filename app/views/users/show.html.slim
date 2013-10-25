@@ -6,9 +6,9 @@
     = link_to 'New Document', new_user_document_path(@user), :class => 'button small'
     h6 Recent Documents
     ul.recent-docs
-      - @documents.order("updated_at DESC").first(5).each do |document|
+      - @documents.order("updated_at DESC").first(3).each do |document|
         a href="#{edit_user_document_path(@user, document)}"
-          li #{document.title}
+          li #{document.title.titleize}
     h6 Lists
     ul.tags
       - unless @user.documents.present?
@@ -16,15 +16,19 @@
       - else
         a href="#{user_path(@user)}"
           li All
+        - tags = []
         - @user.documents.each do |document|
           - document.tags.each do |tag|
-            a href="#{tag_path(@user, tag.name)}"
-              li #{tag.name}
+            - tags << tag
+            - tags.uniq!
+        - tags.each do |tag|
+          a href="#{tag_path(@user, tag.name)}"
+            li #{tag.name}
     h6 Editables
     ul.editables
       - @user.editables.each do |editable|
         a href="#{editable_path(@user, editable)}"
-          li #{editable.title}
+          li #{editable.title.titleize}
   .small-12.large-10.columns.main-user-area
     .your-docs-title
       h6 Your Documents
@@ -32,7 +36,7 @@
       - @documents.order("title ASC").each do |document|
         li.item.cf
           h3.special-link
-            = link_to document.title, edit_user_document_path(@user, document)
+            = link_to document.title.titleize, edit_user_document_path(@user, document)
           .summary
             - mrk_dwn = markdown document.content
             = truncate(Nokogiri::HTML(mrk_dwn).text, length: 300)
@@ -43,3 +47,4 @@
                 = link_to 'Delete', delete_document_path(@user, document), :method => 'delete'
               span.preview
                 = link_to 'Preview', user_document_path(@user, document)
+
