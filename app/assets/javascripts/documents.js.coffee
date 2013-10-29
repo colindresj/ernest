@@ -24,11 +24,6 @@ $ ->
     $('#docInfo').foundation('reveal', 'open')
     return false
 
-## Always start at bottom of document
-$ ->
-  textarea = $('.documentArea');
-  $(textarea).scrollTop($(textarea)[0].scrollHeight)
-
 ## Keyboard shortcuts
 $ ->
   # Markdown guide

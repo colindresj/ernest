@@ -23,7 +23,7 @@ class UsersController < ApplicationController
   def show
     @user = User.find params[:id]
     if params[:tag_id]
-      @documents = Document.tagged_with params[:tag_id]
+      @documents = @user.documents.tagged_with params[:tag_id]
     else
       @documents = Document.where :user_id => @user.id
     end
@@ -35,7 +35,6 @@ class UsersController < ApplicationController
   end
 
   def update
-    #TODO fix the settings page
     user = User.find params[:id]
 
     if user && user.authenticate(params[:user][:password])
