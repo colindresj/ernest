@@ -27,7 +27,6 @@ class UsersController < ApplicationController
     else
       @documents = Document.where :user_id => @user.id
     end
-    #TODO fix tags
   end
 
   def edit
