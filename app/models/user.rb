@@ -18,10 +18,16 @@ class User < ActiveRecord::Base
   has_secure_password
   validates :password, :password_confirmation, :email, :presence => true, :on => :create
   validates :email, :uniqueness => true
-  # validates :password, :password_confirmation, :length => { in: 6..20 }
+  validates :password, :password_confirmation, :length => { in: 6..20 }
+
+  before_create :beta_invited?
+  def beta_invited?
+    unless BetaInvite.exists? :email => email
+      flash[:error] = "Sorry, you're not on our beta list."
+    end
+  end
 
   before_create { generate_token(:auth_token) }
-
   def generate_token(column)
     begin
       self[column] = SecureRandom.urlsafe_base64
