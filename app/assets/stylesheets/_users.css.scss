@@ -20,13 +20,17 @@
 
 .user-page {
   margin-top: -1.875em;
-  background: #f3f2ea;
 }
 .small-12.large-2.columns.side-bar {
   height: 100%;
+  display: table;
   font-size: emCalc(14px);
   padding: 0;
   background-color: #f3f2ea;
+  border-right: 1px solid #d9d8cf;
+  .aside {
+    display: table-cell;
+  }
   .button {
     display: block;
     margin: emCalc(45px) auto;
@@ -62,7 +66,6 @@
 .main-user-area {
   padding-top: emCalc(45px) !important;
   background-color: #f7f7f7;
-  border-left: 1px solid #d9d8cf;
   min-height: 100vh;
 }
 .your-docs-title {
