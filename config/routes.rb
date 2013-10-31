@@ -28,6 +28,10 @@ ErnestApp::Application.routes.draw do
 
   get '/editables/:id' => 'editables#show', :as => 'editable_preview'
 
+  get '/request-access' => 'beta_invites#new', :as => 'beta_invites'
+
+  post '/request-access' => 'beta_invites#create'
+
   #Dropbox
   match '/dropbox/authorize'   => 'dropbox#authorize' , :method => :get , :as => :dropbox_auth
   match '/dropbox/callback' => 'dropbox#callback' , :method => :get , :as =>  :dropbox_callback
