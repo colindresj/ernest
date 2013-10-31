@@ -1,0 +1,9 @@
+.row
+  .sm-12.columns
+    h2 Request Access
+    = form_for @beta_invite do |f|
+      = render 'shared/error_messages', target: @beta_invite
+      = f.label :email
+      = f.text_field :email
+      = f.submit 'Request Access', class: 'button small'
+
