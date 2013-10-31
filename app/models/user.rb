@@ -22,8 +22,13 @@ class User < ActiveRecord::Base
 
   before_create :beta_invited?
   def beta_invited?
-    unless BetaInvite.exists? :email => email
-      flash[:error] = "Sorry, you're not on our beta list."
+    invite = BetaInvite.find_by_email email
+    if invite.nil?
+      errors.add :email, "is not in our beta list."
+      false
+    elsif invite.access == false
+      errors.add :email, "does not yet have access."
+      false
     end
   end
 
