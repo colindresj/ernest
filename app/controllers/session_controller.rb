@@ -7,7 +7,12 @@ class SessionController < ApplicationController
     user = User.where(email: params[:email]).first
 
     if user && user.authenticate(params[:password])
-      session[:user_id] = user.id
+      if params[:remember_me]
+        cookies.permanent[:auth_token] = user.auth_token
+        # session[:user_id] = user.id
+      else
+        cookies[:auth_token] = user.auth_token
+      end
       redirect_to user
     else
       redirect_to login_path, :alert => 'Wrong email or password.'
@@ -15,7 +20,8 @@ class SessionController < ApplicationController
   end
 
   def destroy
-    session[:user_id] = nil
+    cookies.delete(:auth_token)
+    # session[:user_id] = nil
     redirect_to login_path, :notice => 'Succesfully logged out.'
   end
 
