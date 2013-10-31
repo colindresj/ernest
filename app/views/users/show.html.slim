@@ -1,34 +1,35 @@
 .row.full-width.user-page
   .small-12.large-2.columns.side-bar
-    .search
-      = form_tag user_documents_path(@user), method: 'get' do
-        = search_field_tag :search, nil, placeholder: 'search documents', name: 'q'
-    = link_to 'New Document', new_user_document_path(@user), :class => 'button small'
-    h6 Recent Documents
-    ul.recent-docs
-      - @documents.order("updated_at DESC").first(3).each do |document|
-        a href="#{edit_user_document_path(@user, document)}"
-          li #{document.title.titleize}
-    h6 Lists
-    ul.tags
-      - unless @user.documents.present?
-        li No articles yet
-      - else
-        a href="#{user_path(@user)}"
-          li All
-        - tags = []
-        - @user.documents.each do |document|
-          - document.tags.each do |tag|
-            - tags << tag
-            - tags.uniq!
-        - tags.each do |tag|
-          a href="#{tag_path(@user, tag.name)}"
-            li #{tag.name}
-    h6 Editables
-    ul.editables
-      - @user.editables.each do |editable|
-        a href="#{editable_path(@user, editable)}"
-          li #{editable.title.titleize}
+    aside
+      .search
+        = form_tag user_documents_path(@user), method: 'get' do
+          = search_field_tag :search, nil, placeholder: 'search documents', name: 'q'
+      = link_to 'New Document', new_user_document_path(@user), :class => 'button small'
+      h6 Recent Documents
+      ul.recent-docs
+        - @documents.order("updated_at DESC").first(3).each do |document|
+          a href="#{edit_user_document_path(@user, document)}"
+            li #{document.title.titleize}
+      h6 Lists
+      ul.tags
+        - unless @user.documents.present?
+          li No articles yet
+        - else
+          a href="#{user_path(@user)}"
+            li All
+          - tags = []
+          - @user.documents.each do |document|
+            - document.tags.each do |tag|
+              - tags << tag
+              - tags.uniq!
+          - tags.each do |tag|
+            a href="#{tag_path(@user, tag.name)}"
+              li #{tag.name}
+      h6 Editables
+      ul.editables
+        - @user.editables.each do |editable|
+          a href="#{editable_path(@user, editable)}"
+            li #{editable.title.titleize}
   .small-12.large-10.columns.main-user-area
     .your-docs-title
       h6 Your Documents

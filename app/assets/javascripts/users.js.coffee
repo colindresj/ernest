@@ -1,3 +1,4 @@
-# Place all the behaviors and hooks related to the matching controller here.
-# All this logic will automatically be available in application.js.
-# You can use CoffeeScript in this file: http://jashkenas.github.com/coffee-script/
+
+# Hack for making the sidebar full-height
+# Don in conjunction with display:table-cell
+$("aside").height($(".main-user-area").parent().height())
