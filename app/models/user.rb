@@ -18,7 +18,7 @@ class User < ActiveRecord::Base
   has_secure_password
   validates :password, :password_confirmation, :email, :presence => true, :on => :create
   validates :email, :uniqueness => true
-  validates :password, :password_confirmation, :length => { in: 6..20 }
+  # validates :password, :password_confirmation, :length => { in: 6..20 }
 
   before_create :beta_invited?
   def beta_invited?
