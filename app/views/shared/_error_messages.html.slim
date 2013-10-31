@@ -1,3 +1,8 @@
 - if target.errors.any?
-  = target.errors.full_messages.each do |error|
-    = error
+  .row
+    .small-2.large-12.columns
+      .alert-box data-alert="" class="notice alert"
+        .notice
+          - target.errors.full_messages.each do |error|
+            div #{error}
+          a.close href="#" &times;
