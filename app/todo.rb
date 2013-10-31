@@ -1,8 +1,9 @@
+#TODO beta
 #TODO Improve search
+#TODO Email notifications
 #TODO Password recovery
 #TODO Password change
-#TODO Email notifications
-#TODO In-app notificaitons
-#TODO Diff
 #TODO make editables removable
-#TODO beta
+#TODO Diff
+#Ajaxify
+#TODO In-app notificaitons
