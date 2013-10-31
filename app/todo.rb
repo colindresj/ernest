@@ -1,4 +1,4 @@
-#TODO beta
+#TODO refactor! big time!
 #TODO Improve search
 #TODO Email notifications
 #TODO Password recovery
