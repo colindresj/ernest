@@ -41,7 +41,6 @@ class EditablesController < ApplicationController
   end
 
   def update
-    user = User.find params[:user_id]
     editable = Editable.find params[:id]
 
     editable.update_attributes params[:editable]
