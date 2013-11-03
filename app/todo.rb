@@ -1,4 +1,4 @@
-#TODO refactor! big time!
+#TODO add before_destroy callbacks on documents, users
 #TODO Email notifications
 #TODO Password recovery
 #TODO Password change
