@@ -44,4 +44,13 @@ class Document < ActiveRecord::Base
     end
   end
 
+  def gather_editors(editors_array)
+    # Put all the current documents editors into an array to make sure that
+    # the proposed editor doesn't already have editing access
+    self.editables.each do |editable|
+      editors_array << editable.user_id
+    end
+    editors_array
+  end
+
 end
