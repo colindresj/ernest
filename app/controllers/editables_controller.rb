@@ -12,13 +12,7 @@ class EditablesController < ApplicationController
     document = Document.find params[:document_id]
     editor = User.where(:email => params[:editable][:editor_email]).first
 
-    # Create the editors array to make sure that the person doesn't already have editing access
-    # so we can prevent duplicate editables for a user
-    editors = []
-    document.editables.each do |editable|
-      editors << editable.user_id
-    end
-
+    editors = document.gather_editors(Array.new)
 
     if editor.present?
       if params[:editable][:editor_email] == user.email
