@@ -53,8 +53,8 @@ class UsersController < ApplicationController
   def landing
     if current_user
       auth_token = cookies[:auth_token]
-      logged_in_user = User.find_by_auth_token auth_token
-      redirect_to user_path(logged_in_user)
+      logged_in_user = User.where(:auth_token => auth_token).first
+      redirect_to user_path logged_in_user
     end
   end
 

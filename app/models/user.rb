@@ -22,12 +22,12 @@ class User < ActiveRecord::Base
 
   before_create :beta_invited?
   def beta_invited?
-    invite = BetaInvite.find_by_email email
+    invite = BetaInvite.where(:email => email).first
     if invite.nil?
-      errors.add :email, "is not in our beta list."
+      errors.add :email, "#{email} is not in our beta list."
       false
     elsif invite.access == false
-      errors.add :email, "does not yet have access."
+      errors.add :email, "#{email} does not yet have access."
       false
     end
   end
