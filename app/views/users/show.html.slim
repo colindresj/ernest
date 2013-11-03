@@ -29,7 +29,10 @@
       ul.editables
         - @user.editables.each do |editable|
           a href="#{editable_path(@user, editable)}"
-            li #{editable.title.titleize}
+            li
+              = editable.title.titleize
+              / span
+              /   = button_to 'x', editable_remove_path(@user, editable), :method => :delete
   .small-12.large-10.columns.main-user-area
     .your-docs-title
       h6 Your Documents
