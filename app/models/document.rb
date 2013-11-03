@@ -19,6 +19,6 @@ class Document < ActiveRecord::Base
   has_many :editables
 
   def self.search(query)
-    Document.where :title => query.titleize
+    where "title @@ :q or content @@ :q", q: query
   end
 end

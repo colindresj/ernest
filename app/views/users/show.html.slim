@@ -2,8 +2,8 @@
   .small-12.large-2.columns.side-bar
     aside
       .search
-        = form_tag user_documents_path(@user), method: 'get' do
-          = search_field_tag :search, nil, placeholder: 'search documents', name: 'q'
+        = form_tag user_path, method: 'get' do
+          = search_field_tag :search, params[:q], placeholder: 'search documents', name: 'q'
       = link_to 'New Document', new_user_document_path(@user), :class => 'button small'
       h6 Recent Documents
       ul.recent-docs
