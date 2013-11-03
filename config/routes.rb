@@ -28,6 +28,8 @@ ErnestApp::Application.routes.draw do
 
   get '/editables/:id' => 'editables#show', :as => 'editable_preview'
 
+  # delete '/users/:user_id/editables/:id' => 'editables#destroy', :as => 'editable_remove'
+
   get '/request-access' => 'beta_invites#new', :as => 'beta_invites'
 
   post '/request-access' => 'beta_invites#create'
