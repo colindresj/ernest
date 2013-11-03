@@ -21,4 +21,27 @@ class Document < ActiveRecord::Base
   def self.search(query)
     where "title @@ :q or content @@ :q", q: query
   end
+
+  def add_untitled
+    self.title = 'Untitled'
+    self.save
+  end
+
+  def create_dbox_file(db_client)
+    begin
+        db_client.upload "#{self.title}.md", self.content
+    rescue
+    ensure
+    end
+  end
+
+  def delete_dbox_file(db_client)
+    begin
+      file = db_client.find"#{self.title}.md"
+      file.destroy
+    rescue
+    ensure
+    end
+  end
+
 end

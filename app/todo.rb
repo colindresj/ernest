@@ -1,5 +1,4 @@
 #TODO refactor! big time!
-#TODO Improve search
 #TODO Email notifications
 #TODO Password recovery
 #TODO Password change
