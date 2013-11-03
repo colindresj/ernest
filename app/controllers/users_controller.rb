@@ -24,6 +24,8 @@ class UsersController < ApplicationController
     @user = User.find params[:id]
     if params[:tag_id]
       @documents = @user.documents.tagged_with params[:tag_id]
+    elsif params[:q] && params[:q].present? != false
+      @documents = @user.documents.search params[:q]
     else
       @documents = Document.where :user_id => @user.id
     end
