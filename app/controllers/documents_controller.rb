@@ -24,16 +24,10 @@ class DocumentsController < ApplicationController
     document.save
 
     if document.title.empty?
-      document.title = 'Untitled'
-      document.save
+      document.add_untitled
     end
 
-    db_client = dropbox_client
-    begin
-        db_client.upload "#{document.title}.md", document.content
-    rescue
-    ensure
-    end
+    document.create_dbox_file(dropbox_client)
 
     redirect_to edit_user_document_path(user, document), :notice => "#{document.title} saved."
   end
@@ -77,13 +71,7 @@ class DocumentsController < ApplicationController
   def destroy
     document = Document.find params[:id]
 
-    db_client = dropbox_client
-    begin
-      file = db_client.find"#{document.title}.md"
-      file.destroy
-    rescue
-    ensure
-    end
+    document.delete_dbox_file(dropbox_client)
 
     document.destroy
 
