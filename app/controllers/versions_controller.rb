@@ -13,6 +13,7 @@ class VersionsController < ApplicationController
   end
 
   def show
+    # TODO refactored to only search for docs belonging to a user
     @user = User.find params[:user_id]
     @document = Document.find params[:document_id]
     @version = Version.find params[:id]

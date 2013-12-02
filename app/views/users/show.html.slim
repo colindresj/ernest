@@ -38,7 +38,7 @@
       h6 Your Documents
     ul.user-docs-list
       - @documents.order("title ASC").each do |document|
-        li.item.cf
+        li.item.cf id="document-display-#{document.id}"
           h3.special-link
             = link_to document.title.titleize, edit_user_document_path(@user, document)
           .summary

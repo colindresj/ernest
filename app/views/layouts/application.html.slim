@@ -22,9 +22,6 @@ head
   = csrf_meta_tag
 
 body
-  / Hiding the nav on the article edit page
-  / for distraction-free writing
-
   = render 'layouts/nav'
 
   - flash.each do |key, msg|
@@ -36,5 +33,4 @@ body
             a.close href="#" &times;
   == yield
 
-  = javascript_include_tag "autocomplete-rails.js"
   = javascript_include_tag "application"

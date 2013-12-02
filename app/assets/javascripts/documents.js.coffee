@@ -3,13 +3,14 @@
 $ ->
   wordCount = ->
     txtVal = $('.documentArea').val()
-    words = txtVal.trim().replace(/\s+/g, ' ').split(' ').length
-    chars = txtVal.length
-    words = 0 if chars is 0
-    if words == 1
-      $('#counter').html(words + ' word')
-    else
-      $('#counter').html(words + ' words')
+    if txtVal
+      words = txtVal.trim().replace(/\s+/g, ' ').split(' ').length
+      chars = txtVal.length
+      words = 0 if chars is 0
+      if words == 1
+        $('#counter').html(words + ' word')
+      else
+        $('#counter').html(words + ' words')
 
   # Calling the function initially
   wordCount()

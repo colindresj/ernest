@@ -3,6 +3,7 @@ class EditablesController < ApplicationController
   before_filter :authorize
   before_filter :correct_user, :only => [:edit]
 
+  # TODO update with scoping on @user
   def show
     @editable = Editable.find params[:id]
   end
