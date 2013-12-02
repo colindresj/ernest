@@ -18,10 +18,8 @@ class DocumentsController < ApplicationController
   end
 
   def create
-    document = Document.new params[:document]
     user = User.find params[:user_id]
-    document.user = user
-    document.save
+    document = user.documents.create params[:document]
 
     document.create_dbox_file(dropbox_client)
 
