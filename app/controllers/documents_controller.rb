@@ -27,7 +27,6 @@ class DocumentsController < ApplicationController
   end
 
   def show
-    # @user = User.find params[:user_id]
     @document = Document.find params[:id]
   end
 
@@ -57,9 +56,6 @@ class DocumentsController < ApplicationController
     document.update_attributes params[:document]
 
     redirect_to edit_user_document_path(user, document), :notice => "#{document.title} saved."
-  end
-
-  def delete
   end
 
   def destroy
