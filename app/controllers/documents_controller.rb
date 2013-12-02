@@ -23,10 +23,6 @@ class DocumentsController < ApplicationController
     document.user = user
     document.save
 
-    if document.title.empty?
-      document.add_untitled
-    end
-
     document.create_dbox_file(dropbox_client)
 
     redirect_to edit_user_document_path(user, document), :notice => "#{document.title} saved."

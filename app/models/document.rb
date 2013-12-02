@@ -18,13 +18,17 @@ class Document < ActiveRecord::Base
   belongs_to :user
   has_many :editables
 
+  before_save :add_untitled
+
   def self.search(query)
     where "title @@ :q or content @@ :q", q: query
   end
 
   def add_untitled
-    self.title = 'Untitled'
-    self.save
+    if title.empty?
+      self.title = 'Untitled'
+      self.save
+    end
   end
 
   def create_dbox_file(db_client)
