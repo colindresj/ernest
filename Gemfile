@@ -40,6 +40,7 @@ group :development, :test do
                             # https://github.com/voormedia/rails-erd
   gem 'awesome_print'       # Pretty print your Ruby objects in full color and with proper indentation
                             # https://github.com/michaeldv/awesome_print
+  gem "rails_best_practices"
 end
 
 
