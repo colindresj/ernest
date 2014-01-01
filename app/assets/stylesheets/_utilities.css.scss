@@ -67,50 +67,42 @@ input:focus {
 *** Keyframes ***
 ****************/
 
-@-webkit-keyframes fadeInUp {
+@-webkit-keyframes fadeIn {
   0% {
     opacity: 0;
-    -webkit-transform: translateY(2em);
   }
   100% {
     opacity: 1;
-    -webkit-transform: translateY(0);
   }
 }
-  @-moz-keyframes fadeInUp {
+  @-moz-keyframes fadeIn {
     0% {
       opacity: 0;
-      -moz-transform: translateY(2em);
     }
     100% {
       opacity: 1;
-      -moz-transform: translateY(0);
     }
   }
-  @-o-keyframes fadeInUp {
+  @-o-keyframes fadeIn {
     0% {
       opacity: 0;
-      -o-transform: translateY(2em);
     }
     100% {
       opacity: 1;
-      -o-transform: translateY(0);
     }
   }
-  @keyframes fadeInUp {
+  @keyframes fadeIn {
     0% {
       opacity: 0;
-      transform: translateY(2em);
     }
     100% {
       opacity: 1;
-      transform: translateY(0);
     }
   }
 .delay-fade {
-  -webkit-animation: fadeInUp 2s;
-    -moz-animation: fadeInUp 2s;
-    -o-animation: fadeInUp 2s;
-    animation: fadeInUp 2s;
+  -webkit-animation: fadeIn 2s;
+    -moz-animation: fadeIn 2s;
+    -o-animation: fadeIn 2s;
+    animation: fadeIn 2s;
 }
 
