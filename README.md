@@ -1,5 +1,6 @@
 ##Ernest
 **Ernest** is a web-based writing utility with built-in version control and thought-about online editing.
+[Ernest](http://write-with-ernest.herokuapp.com "Ernest").
 
 ###How It Works
 #####Version Control
