@@ -3,5 +3,6 @@ class BetaInvite < ActiveRecord::Base
 
   def grantaccess
     self.access = true
+    self
   end
 end

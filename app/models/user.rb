@@ -29,6 +29,8 @@ class User < ActiveRecord::Base
     elsif invite.access == false
       errors.add :email, "#{email} does not yet have access."
       false
+    elsif invite.access == true
+      true
     end
   end
 
