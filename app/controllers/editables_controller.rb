@@ -21,13 +21,8 @@ class EditablesController < ApplicationController
       elsif editors.include? editor.id
         redirect_to :back, :notice => "Sorry, this person already has editing access."
       else
-        # TODO refactor this part
         editable = Editable.new
-        editable.title = document.title
-        editable.content = document.content
-        editable.document_id = document.id
-        editable.user_id = editor.id
-
+        editable.assign_document_and_editor
         editable.save
 
         redirect_to :back, :notice => "#{editor.email} can now propose edits to #{document.title}."

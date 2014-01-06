@@ -3,19 +3,14 @@ require "spec_helper"
 describe User do
 
   context "without access granted" do
-    before(:each) do
-      invite = BetaInvite.create(email: "tarzan@test.com")
-    end
-
     it "cannot create a user yet" do
-      expect { create(:user, email: "tarzan@test.com", password: "rumbleInTheJungle123", password_confirmation: "rumbleInTheJungle123") }.to raise_error
+      user = build_stubbed(:user, email: "notYetInvited@test.com", password: "rumbleInTheJungle123", password_confirmation: "rumbleInTheJungle123")
+      expect { user.save }.to raise_error
     end
   end
 
   context "with access granted" do
     before(:each) do
-      invite = BetaInvite.create(email: "tarzan@test.com")
-      invite.grantaccess.save!
       @user = create(:user, email: "tarzan@test.com", password: "rumbleInTheJungle123", password_confirmation: "rumbleInTheJungle123")
     end
 
