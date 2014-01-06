@@ -1,23 +1,22 @@
 class VersionsController < ApplicationController
 
   before_filter :authorize, :only => [:show]
+  before_filter :find_document_versions
 
   def revert
-    @version = Version.find params[:id]
     @version.reify.save!
-
-    user = User.find params[:user_id]
-    document = Document.find params[:document_id]
-
-    redirect_to edit_user_document_path(user, document), :notice => "Reverted #{document.title}"
+    redirect_to edit_user_document_path(@user, @document), :notice => "Reverted #{@document.title}"
   end
 
   def show
-    # TODO refactored to only search for docs belonging to a user
-    @user = User.find params[:user_id]
-    @document = Document.find params[:document_id]
-    @version = Version.find params[:id]
     @version_doc = @version.reify
+  end
+
+  private
+  def find_document_versions
+    @user = User.find params[:user_id]
+    @document = @user.documents.find params[:document_id]
+    @version = @document.versions.find params[:id]
   end
 
 end
