@@ -297,6 +297,7 @@ DEPENDENCIES
   rails (= 3.2.14)
   rails-erd
   rails_best_practices
+  rake
   redcarpet
   rspec-rails
   sass-rails (~> 3.2.3)
