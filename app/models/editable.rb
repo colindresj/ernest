@@ -17,4 +17,12 @@ class Editable < ActiveRecord::Base
 
   belongs_to :user
   belongs_to :document
+
+  def assign_document_and_editor(parent_document, editor)
+    self.title = parent_document.title
+    self.content = parent_document.content
+    self.document_id = parent_document.id
+    self.user_id = editor.id
+    self
+  end
 end
