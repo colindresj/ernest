@@ -12,8 +12,8 @@
 
 class User < ActiveRecord::Base
   attr_accessible :name, :email, :password, :password_confirmation
-  has_many :documents
-  has_many :editables
+  has_many :documents, dependent: :destroy
+  has_many :editables, dependent: :destroy
 
   has_secure_password
   validates :password, :password_confirmation, :email, :presence => true, :on => :create
@@ -21,6 +21,7 @@ class User < ActiveRecord::Base
   validates :password, :password_confirmation, :length => { in: 6..20 }
 
   before_create :beta_invited?
+
   def beta_invited?
     invite = BetaInvite.where(:email => email).first
     if invite.nil?
