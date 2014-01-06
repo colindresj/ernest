@@ -2,10 +2,10 @@ class EditablesController < ApplicationController
 
   before_filter :authorize
   before_filter :correct_user, :only => [:edit]
+  before_filter :find_user_and_editable, :except => [:create]
 
-  # TODO update with scoping on @user
   def show
-    @editable = Editable.find params[:id]
+    # @editable and @user in before_filter
   end
 
   def create
@@ -22,7 +22,7 @@ class EditablesController < ApplicationController
         redirect_to :back, :notice => "Sorry, this person already has editing access."
       else
         editable = Editable.new
-        editable.assign_document_and_editor
+        editable.assign_document_and_editor(document, editor)
         editable.save
 
         redirect_to :back, :notice => "#{editor.email} can now propose edits to #{document.title}."
@@ -33,15 +33,23 @@ class EditablesController < ApplicationController
   end
 
   def edit
-    @user = User.find params[:user_id]
-    @editable = Editable.find params[:id]
+    # @editable and @user in before_filter
   end
 
   def update
-    editable = Editable.find params[:id]
+    # @editable and @user in before_filter
+    @editable.update_attributes params[:editable]
+    redirect_to :back, :notice => "#{@editable.title} edits recorded."
+  end
 
-    editable.update_attributes params[:editable]
-    redirect_to :back, :notice => "#{editable.title} edits recorded."
+  private
+  def find_user_and_editable
+    unless params[:user_id].nil?
+      @user = User.find params[:user_id]
+      @editable = @user.editables.find params[:id]
+    else
+      @editable = Editable.find params[:id]
+    end
   end
 
 end
