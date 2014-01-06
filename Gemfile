@@ -28,6 +28,7 @@ group :development, :test do
   gem 'guard-rails'
   gem 'guard-rspec', :require => false
   gem 'terminal-notifier-guard', :require => false
+  gem 'factory_girl'
   gem 'pry-rails'
   gem 'pry-debugger'
   gem 'pry-stack_explorer'
