@@ -40,6 +40,7 @@ group :development, :test do
   gem 'rails-erd'
   gem 'awesome_print'
   gem "rails_best_practices"
+  gem 'rake'
 end
 
 
