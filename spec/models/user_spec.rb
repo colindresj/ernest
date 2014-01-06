@@ -1,4 +1,4 @@
-require 'spec_helper'
+require "spec_helper"
 
 describe User do
 
@@ -20,11 +20,11 @@ describe User do
     end
 
     it "authenticates with correct password" do
-      @user.authenticate("rumbleInTheJungle123").should eq(@user)
+      expect(@user.authenticate("rumbleInTheJungle123")).to eq(@user)
     end
 
     it "does not authenticate with incorrect password" do
-      @user.authenticate("wrongPassword").should be_false
+      expect(@user.authenticate("wrongPassword")).to be_false
     end
 
     it { should have_secure_password }
