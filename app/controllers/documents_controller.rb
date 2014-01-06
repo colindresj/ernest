@@ -16,10 +16,13 @@ class DocumentsController < ApplicationController
   end
 
   def create
-    document = @user.documents.create params[:document]
-    document.create_dbox_file(dropbox_client)
-
-    redirect_to edit_user_document_path(@user, document), :notice => "#{document.title} saved."
+    document = @user.documents.new params[:document]
+    if document.save
+      document.create_dbox_file(dropbox_client)
+      redirect_to edit_user_document_path(@user, document), :notice => "#{document.title} saved."
+    else
+      redirect_to :back, :alert => "#{document.title} could not be saved."
+    end
   end
 
   def show
@@ -33,33 +36,39 @@ class DocumentsController < ApplicationController
 
   def update
     document = @user.documents.find params[:id]
+    document_prev_state = document
     db_client = dropbox_client
 
-    begin
-      if document.title == params[:document][:title]
-        db_client.upload "#{params[:document][:title]}.md", params[:document][:content]
-      else
-        file = db_client.find"#{document.title}.md"
-        file.destroy
-        db_client.upload "#{params[:document][:title]}.md", document.content
+    if document.update_attributes params[:document]
+      begin
+        if document_prev_state.title == document.title
+          db_client.upload "#{document.title}.md", document.content
+        else
+          file = db_client.find"#{document_prev_state.title}.md"
+          file.destroy
+          db_client.upload "#{document.title}.md", document.content
+        end
+      rescue
+      ensure
       end
-    rescue
-    ensure
+
+      redirect_to edit_user_document_path(user, document), :notice => "#{document.title} saved."
+    else
+      redirect_to :back, :alert => "#{document.title} could not be saved."
     end
-
-    document.update_attributes params[:document]
-
-    redirect_to edit_user_document_path(user, document), :notice => "#{document.title} saved."
   end
 
   def destroy
     document = @user.documents.find params[:id]
     document.delete_dbox_file(dropbox_client)
-    document.destroy
-
-    redirect_to :back, :notice => "#{document.title} deleted."
+    if document.destroy
+      redirect_to :back, :notice => "#{document.title} deleted."
+    else
+      redirect_to :back, :alert => "#{document.title} could not be deleted."
+    end
   end
 
+  private
   def get_user
     @user = User.find params[:user_id]
   end
