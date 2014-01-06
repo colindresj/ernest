@@ -1,5 +1,4 @@
 #TODO add before_destroy callbacks on documents, users
-#TODO scoping for AR queries
 #TODO check on .save for document/editable creating and updating
 #TODO Email notifications
 #TODO Password recovery

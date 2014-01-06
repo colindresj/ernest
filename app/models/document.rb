@@ -16,9 +16,10 @@ class Document < ActiveRecord::Base
   has_paper_trail :on => [:update]
 
   belongs_to :user
-  has_many :editables
+  has_many :editables, dependent: :destroy
 
   before_save :add_untitled
+  before_destroy :destroy_versions
 
   def self.search(query)
     where "title @@ :q or content @@ :q", q: query
@@ -29,6 +30,10 @@ class Document < ActiveRecord::Base
       self.title = 'Untitled'
       self.save
     end
+  end
+
+  def destroy_versions
+    self.versions.destroy_all
   end
 
   def create_dbox_file(db_client)
