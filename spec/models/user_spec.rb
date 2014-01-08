@@ -14,12 +14,14 @@ describe User do
       @user = create(:user, email: "tarzan@test.com", password: "rumbleInTheJungle123", password_confirmation: "rumbleInTheJungle123")
     end
 
-    it "authenticates with correct password" do
-      expect(@user.authenticate("rumbleInTheJungle123")).to eq(@user)
-    end
+    describe "#authenticate" do
+      it "authenticates with correct password" do
+        expect(@user.authenticate("rumbleInTheJungle123")).to eq(@user)
+      end
 
-    it "does not authenticate with incorrect password" do
-      expect(@user.authenticate("wrongPassword")).to be_false
+      it "does not authenticate with incorrect password" do
+        expect(@user.authenticate("wrongPassword")).to be_false
+      end
     end
 
     it { should have_secure_password }
