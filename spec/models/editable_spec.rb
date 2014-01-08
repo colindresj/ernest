@@ -2,7 +2,7 @@ require "spec_helper"
 
 describe Editable do
 
-  context "when assigning a document and editor" do
+  describe "#assign_document_and_editor" do
     before(:each) do
       @editor = create(:user)
       @parent_document = create(:document, title: "Testing", content: "testing content")

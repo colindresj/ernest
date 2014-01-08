@@ -1,9 +1,11 @@
 require "spec_helper"
 
 describe Document do
-  it "self titles with 'Untitled' if no title is entered on save" do
-    document = create(:document, title: "")
-    expect(document.title).to eq("Untitled")
+  context "when not title is entered on save" do
+    it "self titles with 'Untitled'" do
+      document = create(:document, title: "")
+      expect(document.title).to eq("Untitled")
+    end
   end
 
   it { should have_many(:editables) }
