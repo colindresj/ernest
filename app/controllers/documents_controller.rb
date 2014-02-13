@@ -52,7 +52,7 @@ class DocumentsController < ApplicationController
       ensure
       end
 
-      redirect_to edit_user_document_path(user, document), :notice => "#{document.title} saved."
+      redirect_to edit_user_document_path(@user, document), :notice => "#{document.title} saved."
     else
       redirect_to :back, :alert => "#{document.title} could not be saved."
     end

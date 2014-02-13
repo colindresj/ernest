@@ -23,11 +23,15 @@
 }
 .small-12.large-2.columns.side-bar {
   height: 100%;
-  display: table;
+  // display: table;
+  position: absolute;
   font-size: emCalc(14px);
   padding: 0;
   background-color: #f3f2ea;
   border-right: 1px solid #d9d8cf;
+  @media only screen and (max-width: 768px) {
+    position: relative;
+  }
   .aside {
     display: table-cell;
   }
