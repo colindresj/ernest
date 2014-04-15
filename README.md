@@ -1,4 +1,4 @@
-[![Build Status](https://travis-ci.org/corporadobob/ernest.png?branch=master)](https://travis-ci.org/corporadobob/ernest)
+[![Build Status](https://travis-ci.org/colindresj/ernest.svg?branch=master)](https://travis-ci.org/colindresj/ernest)
 
 ##Ernest
 **Ernest** is a web-based writing utility with built-in version control and thought-about online editing.
